@@ -43,3 +43,4 @@ for (let i = 0; i < gridSize; i++) {
 
   console.log(row);
 }
+
