@@ -73,4 +73,66 @@ function reverseArrayInPlace(arr) {
 // A list is a nested set of objects, with the first object holding a reference to the second,
 // the second to the third, and so on.
 
-// let list = {value: 1, rest: { value: 2, rest: { value: 3, rest: null}}}
+let list = { value: 1, rest: { value: 2, rest: { value: 3, rest: null } } };
+let arr = [1, 2, 3];
+
+function arrayToList(arr) {
+  let list = null;
+  for (let i = arr.length - 1; i >= 0; i--) {
+    list = { value: arr[i], rest: list };
+  }
+  return list;
+}
+// console.log(arrayToList(arr)); //-> { value: 1, rest: { value: 2, rest: { value: 3, rest: null } } }
+
+// Also write a listToArray function that produces an array from a list.
+function listToArray(list) {
+  let newArr = [];
+  while (list !== null) {
+    newArr.push(list.value);
+    list = list.rest;
+  }
+  return newArr;
+}
+// console.log(listToArray(list)) //-> [1, 2, 3]
+
+// Add a helper function, which takes an element and a list and creates a new list that adds the element to the front of the input list.
+function prepend(elem, list) {
+  let prependList = { value: elem, rest: list };
+  return prependList;
+}
+// console.log(prepend(10, prepend(20, null))) // → {value: 10, rest: {value: 20, rest: null}}
+
+// Write a helper function nth, which takes a list and a number and returns the element at the given position in the list
+// (with zero referring to the first element)
+// or undefined when there is no such element.
+function nth(list, num) {
+  let item = list;
+  let currentItem = 0;
+  while (item !== null) {
+    if (currentItem === num) {
+      return item.value;
+    }
+    item = item.rest;
+    currentItem++;
+  }
+  return undefined;
+}
+// console.log(nth(arrayToList([10, 20, 30]), 1)); // → 20
+
+// nth recursive
+function nthRecursive(list, num) {
+  if (list === null) {
+    return undefined;
+  } else if (num === 0) {
+    return list.value;
+  } else {
+    return nthRecursive(list.rest, num - 1);
+  }
+}
+// console.log(nthRecursive(arrayToList([10, 20, 30]), 1)); // → 20
+
+// Deep Comparison
+// Write a function deepEqual that takes two values and returns true only if they are the same value
+// or are objects with the same properties, where the values of the properties are equal when compared with a recursive call to deepEqual.
+
