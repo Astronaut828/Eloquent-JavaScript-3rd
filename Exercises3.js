@@ -154,16 +154,10 @@ function deepEqual(objA, objB) {
             return false;
           }
         } else {
-          console.log(
-            "Props !== :",
-            objAProps[prop],
-            objBProps[prop]
-          );
           return false;
         }
       }
     } else {
-      console.log("Amount of properties !== :", objAProps, objBProps);
       return false;
     }
   } else {
