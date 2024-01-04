@@ -8,7 +8,7 @@ function range(start, end) {
   }
   return nums;
 }
-// console.log(range(2, 6)); //-> [ 2, 3, 4, 5, 6 ]
+console.log(range(2, 6)); //-> [ 2, 3, 4, 5, 6 ]
 
 // Next, write a sum function that takes an array of numbers and returns the sum of these numbers.
 function sum(arr) {
@@ -18,7 +18,7 @@ function sum(arr) {
   }
   return sum;
 }
-// console.log(sum(range(1, 10))); //-> 55
+console.log(sum(range(1, 10))); //-> 55
 
 // As a bonus assignment, modify your range function to take an optional third argument that indicates the “step” value used to build up the array.
 function rangeStep(start, end, step) {
@@ -38,8 +38,8 @@ function rangeStep(start, end, step) {
   }
   return nums;
 }
-// console.log(rangeStep(1, 10, 2)); //-> [ 1, 3, 5, 7, 9 ]
-// console.log(rangeStep(10, 1, -2)); //-> [ 10, 8, 6, 4, 2 ]
+console.log(rangeStep(1, 10, 2)); //-> [ 1, 3, 5, 7, 9 ]
+console.log(rangeStep(10, 1, -2)); //-> [ 10, 8, 6, 4, 2 ]
 
 // Reversing an Array
 // Neither may use the standard reverse method.
@@ -53,7 +53,7 @@ function reverseArray(arr) {
   }
   return newArr;
 }
-// console.log(reverseArray([1, 2, 3, 4, 5])); //-> [ 5, 4, 3, 2, 1 ]
+console.log(reverseArray([1, 2, 3, 4, 5])); //-> [ 5, 4, 3, 2, 1 ]
 
 // The second, reverseArrayInPlace, does what the reverse method does:
 // it modifies the array given as argument by reversing its elements.
@@ -65,7 +65,7 @@ function reverseArrayInPlace(arr) {
   }
   return arr;
 }
-// console.log(reverseArrayInPlace([1, 2, 3, 4, 5])); //-> [ 5, 4, 3, 2, 1 ]
+console.log(reverseArrayInPlace([1, 2, 3, 4, 5])); //-> [ 5, 4, 3, 2, 1 ]
 
 // A List
 // Objects, as generic blobs of values, can be used to build all sorts of data structures.
@@ -83,7 +83,7 @@ function arrayToList(arr) {
   }
   return list;
 }
-// console.log(arrayToList(arr)); //-> { value: 1, rest: { value: 2, rest: { value: 3, rest: null } } }
+console.log(arrayToList(arr)); //-> { value: 1, rest: { value: 2, rest: { value: 3, rest: null } } }
 
 // Also write a listToArray function that produces an array from a list.
 function listToArray(list) {
@@ -94,14 +94,14 @@ function listToArray(list) {
   }
   return newArr;
 }
-// console.log(listToArray(list)) //-> [1, 2, 3]
+console.log(listToArray(list)) //-> [1, 2, 3]
 
 // Add a helper function, which takes an element and a list and creates a new list that adds the element to the front of the input list.
 function prepend(elem, list) {
   let prependList = { value: elem, rest: list };
   return prependList;
 }
-// console.log(prepend(10, prepend(20, null))) // → {value: 10, rest: {value: 20, rest: null}}
+console.log(prepend(10, prepend(20, null))) // → {value: 10, rest: {value: 20, rest: null}}
 
 // Write a helper function nth, which takes a list and a number and returns the element at the given position in the list
 // (with zero referring to the first element)
@@ -118,7 +118,7 @@ function nth(list, num) {
   }
   return undefined;
 }
-// console.log(nth(arrayToList([10, 20, 30]), 1)); // → 20
+console.log(nth(arrayToList([10, 20, 30]), 1)); // → 20
 
 // nth recursive
 function nthRecursive(list, num) {
@@ -130,9 +130,58 @@ function nthRecursive(list, num) {
     return nthRecursive(list.rest, num - 1);
   }
 }
-// console.log(nthRecursive(arrayToList([10, 20, 30]), 1)); // → 20
+console.log(nthRecursive(arrayToList([10, 20, 30]), 1)); // → 20
 
 // Deep Comparison
 // Write a function deepEqual that takes two values and returns true only if they are the same value
 // or are objects with the same properties, where the values of the properties are equal when compared with a recursive call to deepEqual.
+let obj = { here: { is: "an" }, object: 2 };
 
+function deepEqual(objA, objB) {
+  if (
+    objA !== null &&
+    objB !== null &&
+    typeof objA == "object" &&
+    typeof objB == "object"
+  ) {
+    let objAProps = Object.keys(objA);
+    let objBProps = Object.keys(objB);
+
+    if (objAProps.length == objBProps.length) {
+      for (let prop in objAProps) {
+        if (objB.hasOwnProperty(objAProps[prop])) {
+          if (!deepEqual(objA[objAProps[prop]], objB[objAProps[prop]])) {
+            return false;
+          }
+        } else {
+          console.log(
+            "Props not matching:",
+            objAProps[prop],
+            objBProps[prop]
+          );
+          return false;
+        }
+      }
+    } else {
+      console.log("!Amount of properties", objAProps, objBProps);
+      return false;
+    }
+  } else {
+    return objA === objB;
+  }
+  return true;
+}
+
+console.log(deepEqual(obj, obj)); // → true
+console.log(deepEqual({ a: 1, b: 4 }, null)); // → false
+console.log(deepEqual(obj, { here: { is: "an" }, object: 2 })); // → true
+console.log(deepEqual(obj, { here: 1, object: 2 })); // → false
+//Nested Objects:
+console.log(deepEqual({ a: { b: { c: 1 } } }, { a: { b: { c: 1 } } })); // → true
+console.log(deepEqual({ a: { b: 1 } }, { a: { b: 2 } })); // → false
+// Objects with Arrays:
+console.log(deepEqual({ arr: [1, 2, 3] }, { arr: [1, 2, 3] })); // → true
+console.log(deepEqual({ arr: [1, 2, 3] }, { arr: [1, 2, 4] })); // → false
+// Objects with Different Types of Values:
+console.log(deepEqual({ a: 1, b: "yes", c: null }, { a: 1, b: "yes", c: null })); // → true
+console.log(deepEqual({ a: 1, b: "yes", c: null }, { a: 1, b: "no", c: null })); // → false
