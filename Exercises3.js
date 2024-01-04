@@ -155,7 +155,7 @@ function deepEqual(objA, objB) {
           }
         } else {
           console.log(
-            "Props not matching:",
+            "Props !== :",
             objAProps[prop],
             objBProps[prop]
           );
@@ -163,7 +163,7 @@ function deepEqual(objA, objB) {
         }
       }
     } else {
-      console.log("Amount of properties !==", objAProps, objBProps);
+      console.log("Amount of properties !== :", objAProps, objBProps);
       return false;
     }
   } else {
