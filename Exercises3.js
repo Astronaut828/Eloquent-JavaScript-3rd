@@ -163,7 +163,7 @@ function deepEqual(objA, objB) {
         }
       }
     } else {
-      console.log("!Amount of properties", objAProps, objBProps);
+      console.log("Amount of properties !==", objAProps, objBProps);
       return false;
     }
   } else {
@@ -185,3 +185,4 @@ console.log(deepEqual({ arr: [1, 2, 3] }, { arr: [1, 2, 4] })); // → false
 // Objects with Different Types of Values:
 console.log(deepEqual({ a: 1, b: "yes", c: null }, { a: 1, b: "yes", c: null })); // → true
 console.log(deepEqual({ a: 1, b: "yes", c: null }, { a: 1, b: "no", c: null })); // → false
+
