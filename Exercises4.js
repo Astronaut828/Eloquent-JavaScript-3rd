@@ -52,3 +52,6 @@ console.log(everyMeth([1, 3, 5], (n) => n < 10)); // → true
 console.log(everyMeth([2, 4, 16], n => n < 10)); // → false
 console.log(everyMeth([], n => n < 10)); // → true
 
+// Dominant writing direction
+// Write a function that computes the dominant writing direction in a string of text.
+const SCRIPTS = require("./SCRIPTS.js");
