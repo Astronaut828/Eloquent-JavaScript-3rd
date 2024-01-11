@@ -16,6 +16,8 @@ The exercises are organized by chapters. Each set of exercises from a chapter is
 - `Exercises2.js`: Functions
 - `Exercises3.js`: Data Structures: Objects and Arrays
 - `Exercises4.js`: Higher-Order Functions
+- `Exercises5.js`: The Secret Life of Objects
+
 
 Each JavaScript file (`Exercises1.js`, `Exercises2.js`, etc.) includes comprehensive solutions and explanations for the exercises presented in the corresponding chapter, aiding in a deeper understanding of the concepts taught.
 
