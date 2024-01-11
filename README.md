@@ -19,7 +19,7 @@ The exercises are organized by chapters. Each set of exercises from a chapter is
 - `Exercises5.js`: The Secret Life of Objects
 
 
-Each JavaScript file (`Exercises1.js`, `Exercises2.js`, etc.) includes comprehensive solutions and explanations for the exercises presented in the corresponding chapter, aiding in a deeper understanding of the concepts taught.
+Each JavaScript file (`Exercises1.js`, `Exercises2.js`, etc.) includes comprehensive solutions for the exercises presented in the corresponding chapter, aiding in a deeper understanding of the concepts taught.
 
 ## How to Use This Repository
 
