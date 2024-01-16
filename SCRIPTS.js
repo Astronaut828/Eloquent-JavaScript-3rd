@@ -1,5 +1,4 @@
 // Generated from the Unicode 10 database and https://en.wikipedia.org/wiki/Script_(Unicode)
-
 var SCRIPTS = [
     {
       name: "Adlam",
