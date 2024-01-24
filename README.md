@@ -19,7 +19,7 @@ The exercises are organized by chapters. Each set of exercises from a chapter is
 - `Exercises5.js`: The Secret Life of Objects
 - `Exercises6.js`: Project: A Robot [Repo](https://github.com/Astronaut828/DeliveryRobot)
 - `Exercises7.js`: Bugs and Errors
-
+- `Exercises8.js`: Regular Expressions
 
 Each JavaScript file (`Exercises1.js`, `Exercises2.js`, etc.) includes comprehensive solutions for the exercises presented in the corresponding chapter, aiding in a deeper understanding of the concepts taught.
 
